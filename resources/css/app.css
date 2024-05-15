@@ -1,3 +1,18 @@
+@import './componentes/navigation.css';
+@import './componentes/contenedor.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html{
+    background-color: var(--fondo) !important;
+}
+
+h1, h2, h3, h4, h5, h6, button{
+    font-family: Voltaire, sans-serif;
+}
+
+p{
+    font-family: Dosis, sans-serif;
+}

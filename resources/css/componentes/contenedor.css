@@ -1,0 +1,21 @@
+.contenedor{
+    background-color: white;
+    border-radius: 20px;
+    margin: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: -4px 8px 10px #398D99;
+}
+
+
+button{
+    padding: 10px !important; 
+    border-radius: 20px !important;
+    width: 100% !important;
+}
+
+button:hover{
+    background-color: #011627 !important;
+    color: white !important;
+    font-weight: bold !important;
+}

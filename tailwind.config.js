@@ -14,7 +14,24 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                xxl: '50px',
+                xl: '45px',
+                lg: '40px',
+                md: '35px',
+                sm: '30px',
+                xs: '25px',
+            }
         },
+        colors:{
+            primary: '#D67976', 
+            secondary: '#398D99',
+            darken: '#011627',
+            destacar: '#064152',
+            fondo: '#F0D9D8',
+            white: '#FFFFFF',
+            transparent: 'transparent',
+        }
     },
 
     plugins: [forms],
