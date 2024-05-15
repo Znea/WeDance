@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="sticky top-0 bg-white ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl py-4 mx-auto px-4 sm:px-6">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
+                    <a href="{{ route('/') }}">
                         <img src="{{asset('images/logo.png')}}" alt="" class="logo">
                     </a>
                 </div>
@@ -14,6 +14,12 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Profesores') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Clases') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Alumnos') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -51,6 +57,12 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
+                @else
+                    <div class="ms-6">
+                        <form action="{{ route('login') }}">
+                            <button class="login text-white bg-destacar">Inicia Sesión</button>
+                        </form>
+                    </div>
                 @endauth
             </div>
 
