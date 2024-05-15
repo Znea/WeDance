@@ -43,7 +43,7 @@ class UserFactory extends Factory
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
             'date_of_birth' => fake()->date(),
-            'email' => $name.fake()->randomNumber(3).fake()->safeEmailDomain(),
+            'email' => $name.fake()->randomNumber(3).'@'.fake()->safeEmailDomain(),
             'email_verified_at' => now(),
             'rol' => $rol,
             'biography' => $biography,
