@@ -1,7 +1,7 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    
+
     <div class="text-center">
         <p class="font-semibold text-destacar">¿Todavía no tienes una cuenta? <a class="hover:underline" href="{{route('register')}}">Regístrate</a></p>
     </div>
@@ -11,7 +11,7 @@
 
         <!-- Email Address -->
         <div class="relative z-0 w-full mb-5 group" x-data="{ focused: false }">
-            <x-input-label for="email" :value="__('Correo')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+            <x-input-label for="email" :value="__('Correo')" class="label text-darken bg-transparent" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
             <x-text-input id="email" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" x-ref="input" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
@@ -19,16 +19,16 @@
         <!-- Password -->
         <div class="mt-4 relative z-0 w-full mb-5 group" x-data="{ focused: false }">
             <x-input-label for="password" :value="__('Contraseña')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }" />
-        
+
             <x-text-input id="password" class="block mt-1 w-full"
                           type="password"
                           name="password"
-                          x-on:focus="focused = true" 
-                          x-on:blur="focused = false" 
+                          x-on:focus="focused = true"
+                          x-on:blur="focused = false"
                           x-bind:class="{ 'input-focused': focused || $refs.input.value }"
-                          required autocomplete="current-password" 
+                          required autocomplete="current-password"
                           x-ref="input" />
-        
+
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -47,7 +47,7 @@
                 </a>
             @endif
         </div>
-        <x-primary-button class="w-1/2">
+        <x-primary-button class="button w-1/2">
             {{ __('Inicia sesión') }}
         </x-primary-button>
     </form>

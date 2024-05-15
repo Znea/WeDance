@@ -2,51 +2,96 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <div class="flex items-center justify-between">
+            <!-- Name -->
+            <div class="relative z-0 w-full mb-5 group me-2" x-data="{ focused: false }">
+                <x-input-label for="name" :value="__('Nombre')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                <x-text-input id="name" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="username" x-ref="input" />
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            </div>
+
+            <!-- LastName -->
+            <div class="relative z-0 w-full mb-5 group ms-2" x-data="{ focused: false }">
+                <x-input-label for="lastname" :value="__('Apellidos')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                <x-text-input id="lastname" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="username" x-ref="input" />
+                <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
+            </div>
+        </div>
+
+        <!-- Address -->
+        <div class="relative z-0 w-full mb-5 group" x-data="{ focused: false }">
+            <x-input-label for="address" :value="__('Dirección')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+            <x-text-input id="address" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="username" x-ref="input" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center justify-between">
+            <!-- Phone -->
+            <div class="relative z-0 w-full mb-5 group me-2" x-data="{ focused: false }">
+                <x-input-label for="phone" :value="__('Teléfono')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                <x-text-input id="phone" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="username" x-ref="input" />
+                <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+            </div>
+
+            <!-- DNI -->
+            <div class="relative z-0 w-full mb-5 group ms-2" x-data="{ focused: false }">
+                <x-input-label for="dni" :value="__('DNI')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                <x-text-input id="dni" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="dni" :value="old('dni')" required autofocus autocomplete="username" x-ref="input" />
+                <x-input-error :messages="$errors->get('dni')" class="mt-2" />
+            </div>
+        </div>
+
+        <!-- Fecha de nacimiento -->
+        <div class="relative z-0 w-full mb-5 group"">
+            <x-input-label for="date_of_birth" :value="__('Fecha de Nacimiento')"/>
+            <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required autofocus autocomplete="username" x-ref="input" />
+            <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+        <div class="relative z-0 w-full mb-5 group" x-data="{ focused: false }">
+            <x-input-label for="email" :value="__('Correo')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+            <x-text-input id="email" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" x-ref="input" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <div class="mt-4 relative z-0 w-full mb-5 group" x-data="{ focused: false }">
+            <x-input-label for="password" :value="__('Contraseña')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+                          type="password"
+                          name="password"
+                          x-on:focus="focused = true"
+                          x-on:blur="focused = false"
+                          x-bind:class="{ 'input-focused': focused || $refs.input.value }"
+                          required autocomplete="current-password"
+                          x-ref="input" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+        <div class="mt-4 relative z-0 w-full mb-5 group" x-data="{ focused: false }">
+            <x-input-label for="password" :value="__('Confirmar Contraseña')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation"
+                            x-on:focus="focused = true"
+                            x-on:blur="focused = false"
+                            x-bind:class="{ 'input-focused': focused || $refs.input.value }"
+                            required autocomplete="new-password"
+                            x-ref="input"/>
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
+        <div class="text-center mb-4 ">
+            <p class="font-semibold text-destacar">¿Ya tienes una cuenta? <a class="hover:underline" href="{{route('login')}}">Inicia sesión</a></p>
         </div>
+        <x-primary-button class="button w-1/2">
+            {{ __('Registrate') }}
+        </x-primary-button>
     </form>
 </x-guest-layout>

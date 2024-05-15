@@ -14,7 +14,7 @@
     height: 100px;
 }
 
-.active-link{ 
+.active-link{
     font-weight: 500;
     text-decoration: none;
 }
@@ -25,4 +25,8 @@
 
 .link{
     font-weight: bold;
+}
+
+.boton {
+   background-color: rgba(166, 166, 166, 0.505) !important;
 }

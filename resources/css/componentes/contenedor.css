@@ -8,13 +8,13 @@
 }
 
 
-button{
-    padding: 10px !important; 
+.button{
+    padding: 10px !important;
     border-radius: 20px !important;
     width: 100% !important;
 }
 
-button:hover{
+.button:hover{
     background-color: #011627 !important;
     color: white !important;
     font-weight: bold !important;

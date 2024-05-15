@@ -19,11 +19,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased bg-fondo">
-        @include('layouts.navigation')
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-5 ">
-            
+
             <div>
-                <a href="/">
+                <a href="{{route('/')}}">
                     <img src="{{asset('images/logo.png')}}" class="w-40" alt="">
                 </a>
             </div>

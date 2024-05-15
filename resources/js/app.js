@@ -9,3 +9,4 @@ Alpine.start();
 window.onload = function() {
     document.querySelector('input[autofocus]').blur();
 };
+

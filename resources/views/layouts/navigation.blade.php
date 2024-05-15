@@ -29,8 +29,11 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                <div>{{ Auth::user()->name }}</div>
+                            <button class="inline-flex items-center px-3 py-2 border border-transparent leading-4 font-medium rounded-lg">
+                                <div class="inline-flex items-center text-destacar hover:font-bold">
+                                    <img class="w-10 h-10 rounded-full me-2" src='{{asset('storage/img_perfil/'.Auth::user()->image)}}' alt="">
+                                    <p>{{ Auth::user()->name }}</p>
+                                </div>
 
                                 <div class="ms-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -42,7 +45,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                {{ __('Ver Perfil') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -52,7 +55,7 @@
                                 <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Cerrar Sesión') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
@@ -60,7 +63,7 @@
                 @else
                     <div class="ms-6">
                         <form action="{{ route('login') }}">
-                            <button class="login text-white bg-destacar">Inicia Sesión</button>
+                            <button class="button login text-white bg-destacar">Inicia Sesión</button>
                         </form>
                     </div>
                 @endauth
