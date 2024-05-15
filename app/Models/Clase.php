@@ -14,6 +14,6 @@ class Clase extends Model
         'name',
         'schedule',
         'description',
-        'teacher_id',
+        'user_id',
     ];
 }

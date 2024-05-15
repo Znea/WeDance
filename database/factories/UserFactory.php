@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Category;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -24,15 +25,29 @@ class UserFactory extends Factory
         }
         $name = fake()->firstName();
 
+        $rol = fake()->randomElement(['profesor', 'alumno']);
+        $biography = null;
+        $category_id = null;
+        if ($rol == 'profesor') {
+            $biography = fake()->text(200);
+        }
+
+        if ($rol == 'alumno') {
+            $category_id = Category::pluck('id')->random();
+        }
+
         return [
             'dni' => $dni.fake()->randomLetter(),
             'name' => $name,
             'lastname' => fake()->lastName(),
             'address' => fake()->address(),
-            'phone' => fake()->phone(),
-            'date_of_birth' => fake()->dateOfBirth(),
+            'phone' => fake()->phoneNumber(),
+            'date_of_birth' => fake()->date(),
             'email' => $name.fake()->randomNumber(3).fake()->safeEmailDomain(),
             'email_verified_at' => now(),
+            'rol' => $rol,
+            'biography' => $biography,
+            'category_id' => $category_id,
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
         ];

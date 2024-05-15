@@ -20,10 +20,11 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone')->unique();
             $table->date('date_of_birth');
-            $table->string('rol')->default('user');
+            $table->string('rol');
             $table->string('image')->default('default.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('biography')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

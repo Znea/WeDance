@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,12 +20,12 @@ class ClaseFactory extends Factory
         $name = fake()->unique()->randomElement(['Hip Hop', 'Popping', 'House', 'Breaking']);
         // Obtener las dos primeras letras del nombre seleccionado
         $code = strtoupper(substr($name, 0, 2));
-        $teachers = Teacher::pluck('id')->toArray();
+        $teachers = User::where('rol', 'profesor')->pluck('id')->toArray();
         return [
             'code' => $code,
             'name' => $name,
             'description' => fake()->sentence(),
-            'teacher_id' => fake()->randomElement($teachers),
+            'user_id' => fake()->randomElement($teachers),
             'schedule' =>  "Lunes a Viernes de 16:30 a 18:00"
         ];
     }
