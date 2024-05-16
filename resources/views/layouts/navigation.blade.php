@@ -12,15 +12,19 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    <x-nav-link :href="route('teachers')" :active="request()->routeIs('teachers')">
                         {{ __('Profesores') }}
                     </x-nav-link>
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Clases') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Alumnos') }}
-                    </x-nav-link>
+                    @auth
+                        @if (Auth::user()->rol == 'admin')
+                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                                {{ __('Alumnos') }}
+                            </x-nav-link>
+                        @endif
+                    @endauth
                 </div>
             </div>
 

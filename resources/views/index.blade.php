@@ -12,7 +12,7 @@
         </x-slot>
     </x-contenedor>
 
-    <x-contenedor :ruta="'home'">
+    <x-contenedor :ruta="'teachers'">
         <x-slot name="title">
             PROFESORES
         </x-slot>
