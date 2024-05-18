@@ -60,7 +60,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findorFail($id);
+
+
     }
 
     /**
@@ -70,5 +72,14 @@ class UserController extends Controller
     {
         $teachers = User::where('rol', 'profesor')->get();
         return view('users.teachers')->with('teachers', $teachers);
+    }
+
+    /**
+     * Enseñar la vista de los usuarios que son alumnos
+     */
+    public function students()
+    {
+        $students = User::where('rol', 'alumno')->get();
+        return view('users.students')->with('students', $students);
     }
 }

@@ -20,7 +20,7 @@
                     </x-nav-link>
                     @auth
                         @if (Auth::user()->rol == 'admin')
-                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            <x-nav-link :href="route('students')" :active="request()->routeIs('students')">
                                 {{ __('Alumnos') }}
                             </x-nav-link>
                         @endif

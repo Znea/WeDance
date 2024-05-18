@@ -23,8 +23,9 @@ Route::get('/home', function () {
     return view('index');
 })->name('home');
 
-Route::resource('users', UserController::class); 
+Route::resource('users', UserController::class);
 Route::get('/teachers', [UserController::class, 'teachers'])->name('teachers');
+Route::get('/students', [UserController::class, 'students'])->name('students');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
