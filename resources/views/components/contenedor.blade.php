@@ -7,7 +7,7 @@
     </div>
     <div>
         <form action="{{ route($ruta) }}" method="get">
-            <button type="submit" class="button bg-destacar text-white">Ver más</button>
+            <button type="submit" class="button bg-destacar text-white">VER MÁS</button>
         </form>
     </div>
 </div>
