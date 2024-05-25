@@ -58,11 +58,17 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, string $rol)
     {
         $user = User::findorFail($id);
-
-
+        $user->delete();
+        if($rol == 'profesor')
+        {
+            return redirect()->route('teachers')->with('msg', 'El profesor ha sido eliminado correctamente');
+        }
+        elseif($rol == 'alumno'){
+            return redirect()->route('students')->with('msg', 'El alumno ha sido eliminado correctamente');
+        }
     }
 
     /**

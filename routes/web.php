@@ -26,6 +26,7 @@ Route::get('/home', function () {
 Route::resource('users', UserController::class);
 Route::get('/teachers', [UserController::class, 'teachers'])->name('teachers');
 Route::get('/students', [UserController::class, 'students'])->name('students');
+Route::delete('/destroy/{user}/{rol}', [UserController::class, 'destroy'])->name('user.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

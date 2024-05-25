@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-fondo">
+        <div class=" min-h-screen bg-fondo">
             @include('layouts.navigation')
 
             <!-- Page Content -->
@@ -26,7 +26,7 @@
                 {{ $slot }}
             </main>
 
-            <x-footer />
+            @include('layouts.footer')
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     </body>

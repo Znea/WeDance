@@ -36,7 +36,7 @@
                                 </x-dropdown-link>
 
                                 <!-- Destroy -->
-                                <form method="POST" action="{{ route('users.destroy', ['user' => $usuario]) }}">
+                                <form method="POST" action="{{ route('user.destroy', ['user' => $usuario , 'rol' => $rol ]) }}">
                                     @csrf
                                     @method('DELETE')
 
@@ -71,7 +71,7 @@
                 </div>
             @else
                 <div>
-                    <p>alumno</p>
+                    <p>{{$category}}</p>
                 </div>
             @endif
         </div>

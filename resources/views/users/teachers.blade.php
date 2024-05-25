@@ -1,4 +1,9 @@
 <x-app-layout>
+
+    @if (session('msg'))
+       <x-alerta>{{session('msg')}}</x-alerta>
+    @endif
+
     <div>
         <h1 class="text-center mt-3 text-destacar text-xxl">PROFESORES</h1>
     </div>
@@ -7,7 +12,7 @@
         @foreach ($teachers as $t)
             <x-contenedor-usuarios :ruta="'home'">
                 <x-slot name="imagen">{{$t->image}}</x-slot>
-                <x-slot name="nombre">{{$t->name}}</x-slot>
+                <x-slot name="nombre">{{$t->name}} {{$t->lastname}}</x-slot>
                 <x-slot name="usuario">{{$t->id}}</x-slot>
                 <x-slot name="rol">profesor</x-slot>
                 <x-slot name="biography">{{$t->biography}}</x-slot>

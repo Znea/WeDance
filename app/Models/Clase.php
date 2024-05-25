@@ -16,4 +16,11 @@ class Clase extends Model
         'description',
         'user_id',
     ];
+
+    public function teacher(){
+        return $this->belongsTo('App\Models\User');
+    }
+    public function students(){
+        return $this->belongsToMany('App\Models\User','student_clase');
+    }
 }

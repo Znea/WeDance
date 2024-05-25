@@ -2,6 +2,22 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        <div class="grid grid-col grid-flow-col mb-4">
+            <div class="flex items-center justify-center">
+                <input id="alumnoCheckbox" type="radio" value="alumno" name="rol" class="w-4 h-4 text-primary border-darken focus:ring-primary focus:ring-2">
+                <label for="alumno" class="ms-2 font-medium text-gray-900">Alumno</label>
+            </div>
+            <div class="flex items-center justify-center">
+                <input id="profesorCheckbox" type="radio" value="profesor" name="rol" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                <label for="profesor" class="ms-2 font-medium text-gray-900">Profesor</label>
+            </div>
+        </div>
+
+        <div id="inputContainer" class="relative z-0 w-full mb-5 group hidden" x-data="{ focused: false }">
+            <x-input-label for="clave" :value="__('Clave de Acceso')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+            <x-text-input id="clave" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="password" name="clave" autofocus autocomplete="username" x-ref="input" />
+        </div>
+
         <div class="flex items-center justify-between">
             <!-- Name -->
             <div class="relative z-0 w-full mb-5 group me-2" x-data="{ focused: false }">
@@ -42,7 +58,7 @@
         </div>
 
         <!-- Fecha de nacimiento -->
-        <div class="relative z-0 w-full mb-5 group"">
+        <div class="relative z-0 w-full mb-5 group">
             <x-input-label for="date_of_birth" :value="__('Fecha de Nacimiento')"/>
             <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required autofocus autocomplete="username" x-ref="input" />
             <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />

@@ -1,6 +1,6 @@
 @import './componentes/navigation.css';
 @import './componentes/contenedor.css';
-@import './componentes/footer.css';
+@import './componentes/alerta.css';
 
 @tailwind base;
 @tailwind components;
@@ -17,3 +17,4 @@ h1, h2, h3, h4, h5, h6, button{
 p{
     font-family: Dosis, sans-serif;
 }
+
