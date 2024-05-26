@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('teachers')" :active="request()->routeIs('teachers')">
                         {{ __('Profesores') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    <x-nav-link :href="route('clases.index')" :active="request()->routeIs('clases.index')">
                         {{ __('Clases') }}
                     </x-nav-link>
                     @auth

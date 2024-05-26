@@ -49,4 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleInput();
 });
 
-
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-modal-hide="popup-modal"]').forEach(function (element) {
+        element.addEventListener('click', function () {
+            window.location.reload();
+        });
+    });
+});
