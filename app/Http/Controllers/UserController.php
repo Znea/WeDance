@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
@@ -60,15 +61,32 @@ class UserController extends Controller
      */
     public function destroy(string $id, string $rol)
     {
-        $user = User::findorFail($id);
-        $user->delete();
+        try {
+            $user = User::findorFail($id);
+            $user->delete();
+            if($rol == 'profesor')
+            {
+                return redirect()->route('teachers')->with('msg', 'El profesor ha sido eliminado correctamente');
+            }
+            elseif($rol == 'alumno'){
+                return redirect()->route('students')->with('msg', 'El alumno ha sido eliminado correctamente');
+            }
+        } catch (QueryException $e) {
+            if($rol == 'profesor')
+            {
+                return redirect()->route('teachers')->with('msg', 'El profesor no se ha podido eliminar');
+            }
+            elseif($rol == 'alumno'){
+                return redirect()->route('students')->with('msg', 'El alumno no se ha podido eliminar');
+            }
+        }
+    }
+
+    public function abrirModal(string $id, string $rol){
         if($rol == 'profesor')
-        {
-            return redirect()->route('teachers')->with('msg', 'El profesor ha sido eliminado correctamente');
-        }
-        elseif($rol == 'alumno'){
-            return redirect()->route('students')->with('msg', 'El alumno ha sido eliminado correctamente');
-        }
+            return redirect()->route('teachers')->with('id', $id);
+        elseif($rol == 'alumno')
+            return redirect()->route('students')->with('id', $id);
     }
 
     /**

@@ -2,9 +2,9 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <div class="grid grid-col grid-flow-col mb-4">
+        <div class="grid grid-col grid-flow-col mb-4 mt-3">
             <div class="flex items-center justify-center">
-                <input id="alumnoCheckbox" type="radio" value="alumno" name="rol" class="w-4 h-4 text-primary border-darken focus:ring-primary focus:ring-2">
+                <input checked id="alumnoCheckbox" type="radio" value="alumno" name="rol" class="w-4 h-4 text-primary border-darken focus:ring-primary focus:ring-2">
                 <label for="alumno" class="ms-2 font-medium text-gray-900">Alumno</label>
             </div>
             <div class="flex items-center justify-center">
