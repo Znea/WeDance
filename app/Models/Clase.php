@@ -13,6 +13,7 @@ class Clase extends Model
         'code',
         'name',
         'schedule',
+        'image',
         'description',
         'user_id',
     ];
