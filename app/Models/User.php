@@ -56,7 +56,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Category');
     }
 
-    public function clases(){
-        return $this->belongsToMany('App\Models\Clases','student_clase');
+    public function students_clases(){
+        return $this->belongsToMany('App\Models\Clase','student_clase');
+    }
+
+    public function teacher_clases(){
+        return $this->hasMany('App\Models\Clase');
     }
 }

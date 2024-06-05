@@ -25,7 +25,7 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('users.show', ['user' => $usuario])">
+                                <x-dropdown-link :href="route('users.edit', ['user' => $usuario, 'rol' => $rol])">
                                    <div class="flex">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit custom-svg">
                                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -60,7 +60,7 @@
                     <h3 class="text-md text-secondary text-center">{{$nombre}}</h3>
                 </div>
             @endauth
-            @if ($rol == 'profesor')
+            @if ($rol == 'Profesor')
                 <div class="text-center mt-4">
                     <p>{{$biography}}</p>
                 </div>
@@ -72,8 +72,9 @@
         </div>
 
     </div>
+
     <div class="mt-4">
-        <form action="{{ route($ruta) }}" method="get">
+        <form action="{{ route('users.show', ['user' => $usuario]) }}" method="get">
             <button type="submit" class="button w-full text-xs bg-secondary text-white">{{$rol == 'profesor' ? 'SABER MÁS' : 'VER CLASES'}}</button>
         </form>
     </div>

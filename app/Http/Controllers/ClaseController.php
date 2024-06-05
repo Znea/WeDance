@@ -64,14 +64,32 @@ class ClaseController extends Controller
     {
         try {
             $clase->delete();
-            return redirect()->route('clases.index')->with('msg', 'La clase se ha eliminado correctamente');
+            return redirect()->route('users.index')->with('msg', 'La clase se ha eliminado correctamente');
         } catch (QueryException $e) {
             return redirect()->route('clases.index')->with('msg', 'La clase  no se ha podido eliminar');
         }
     }
 
-    public function abrirModal(string $id)
+    public function eliminarProfesor(string $id){
+        try {
+            $clase = Clase::find($id);
+            $idUser = $clase->user_id;
+            $clase->user_id = null;
+            $clase->save();
+            return redirect()->route('clases.index', ['user' => $idUser])->with('msg', 'Se ha podido quitar la clase a este profesor correctamente');
+        } catch (QueryException $e) {
+            return redirect()->route('clases.index', ['user' => $idUser])->with('msg', 'No se ha podido quitar la clase a este profesor');
+        }
+    }
+
+    public function abrirModal(string $id, string $sitio)
     {
-        return redirect()->route('clases.index')->with('id', $id);
+        if ($sitio == 'clases')
+            return redirect()->route('clases.index')->with('id', $id);
+        elseif ($sitio == 'profesor'){
+            $clase = Clase::find($id);
+            $idUser = $clase->user_id;
+            return redirect()->route('users.show', ['user' => $idUser])->with('id', $id);
+        }
     }
 }

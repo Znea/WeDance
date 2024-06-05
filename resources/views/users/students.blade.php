@@ -37,8 +37,17 @@
        <x-alerta>{{session('msg')}}</x-alerta>
     @endif
 
-    <div>
-        <h1 class="text-center mt-3 text-destacar text-xxl">ALUMNOS</h1>
+    <div class="flex justify-between">
+        <div class="w-full">
+            <h1 class="text-center mt-3 text-destacar text-xxl">ALUMNOS</h1>
+        </div>
+        @auth
+            @if (Auth::user()->rol == 'admin')
+                <form action="{{route('users.create', ['rol' => 'Alumno'])}}" class="my-auto">
+                    <button class="text-xxl my-auto plus-button ">+</button>
+                </form>
+            @endif
+        @endauth
     </div>
 
     <div class="grid-container">
@@ -47,7 +56,7 @@
                 <x-slot name="imagen">{{$t->image}}</x-slot>
                 <x-slot name="nombre">{{$t->name}} {{$t->lastname}}</x-slot>
                 <x-slot name="usuario">{{$t->id}}</x-slot>
-                <x-slot name="rol">alumno</x-slot>
+                <x-slot name="rol">Alumno</x-slot>
                 <x-slot name="category">{{$t->category->name}}</x-slot>
             </x-contenedor-usuarios>
         @endforeach

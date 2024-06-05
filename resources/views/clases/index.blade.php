@@ -62,7 +62,7 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('clases.show', ['clase' => $c->id])">
+                                <x-dropdown-link :href="route('clases.edit', ['clase' => $c->id])">
                                    <div class="flex">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit custom-svg">
                                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -73,7 +73,7 @@
                                 </x-dropdown-link>
 
                                 <!-- Destroy -->
-                                <x-dropdown-link :href="route('clases.modal', ['clase' => $c->id])">
+                                <x-dropdown-link :href="route('clases.modal', ['clase' => $c->id, 'sitio' => 'clases'])">
                                     <div class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 custom-svg">
                                             <polyline points="3 6 5 6 21 6"></polyline>

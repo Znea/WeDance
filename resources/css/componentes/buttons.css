@@ -1,0 +1,17 @@
+.plus-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px; /* Ajusta el tamaño según sea necesario */
+    height: 60px; /* Debe ser igual al ancho para hacer un círculo */
+    border-radius: 50%; /* Hace que el botón sea redondo */
+    text-align: center;
+    line-height: 1; /* Asegura que el símbolo '+' esté centrado */
+    background-color: #398D99; /* Cambia el color del fondo si es necesario */
+    color: white; /* Cambia el color del texto si es necesario */
+    margin-right: 10px;
+}
+
+.plus-button:hover{
+    background-color: #08566b ;
+}
