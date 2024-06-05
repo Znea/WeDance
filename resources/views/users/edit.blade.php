@@ -6,11 +6,11 @@
 
     <div class="contenedor w-3/4 mx-auto">
 
-        <form action="{{route('users.update', ['user' => $user->id])}}" method="POST" class="w-5/6 mx-auto formulario-editar" enctype="multipart/form-data">
+        <img src="{{ asset('storage/img_perfil/' . $user->image) }}" class="image-overlay rounded-lg">
+
+        <form action="{{route('users.update', ['user' => $user->id])}}" method="POST" class="w-5/6 mx-auto show" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
-            <img src="{{ asset('storage/img_perfil/' . $user->image) }}" class="image-overlay-editar rounded-lg" id="imageModalTrigger">
 
             <div class="flex items-center justify-between">
                 <!-- Name -->
@@ -53,12 +53,12 @@
 
             <!-- Fecha de nacimiento -->
             <div class="flex items-center justify-between">
-                <div class="relative z-0 w-full mb-5 group me-2">
+                <div class="relative z-0 w-1/2 mb-5 group me-2">
                     <x-input-label for="date_of_birth" :value="__('Fecha de Nacimiento')"/>
                     <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="$user->date_of_birth" required autofocus autocomplete="username" x-ref="input" />
                     <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
                 </div>
-                <div class="ms-2">
+                <div class="ms-5 w-1/2">
                     <input type="file" class="block w-full input-image" name="image"/>
                 </div>
             </div>
@@ -77,6 +77,11 @@
             <x-primary-button class="button w-1/2">
                 {{ __('ACTUALIZAR') }}
             </x-primary-button>
+        </form>
+        <form class="w-5/6 mx-auto mt-4" action="{{$rol == 'Alumno' ? route('students') : route('teachers')}}">
+            <button class="button font-semibold bg-secondary w-1/2">
+                {{ __('CANCELAR') }}
+            </button>
         </form>
     </div>
 

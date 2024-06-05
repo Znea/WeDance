@@ -106,7 +106,7 @@
         <div class="text-center mb-4 ">
             <p class="font-semibold text-destacar">¿Ya tienes una cuenta? <a class="hover:underline" href="{{route('login')}}">Inicia sesión</a></p>
         </div>
-        <x-primary-button class="button w-1/2">
+        <x-primary-button class="login w-1/2">
             {{ __('Registrate') }}
         </x-primary-button>
     </form>

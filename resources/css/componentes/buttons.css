@@ -15,3 +15,83 @@
 .plus-button:hover{
     background-color: #08566b ;
 }
+
+.button {
+    position: relative;
+    overflow: hidden;
+    padding: 10px !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+    color: white;
+    text-align: center;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -110%;
+    width: 200%;
+    height: 50%;
+    background: rgb(255, 255, 255);
+    box-shadow: 1px 1px 12px 1px rgb(255, 255, 255);
+    transform: rotate(45deg);
+}
+
+.button:hover::before {
+    animation: shimmer 1s linear ;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(0%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.button:hover {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.login {
+    position: relative;
+    overflow: hidden;
+    padding: 10px !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+    color: white;
+    text-align: center;
+}
+
+.login::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -170%;
+    width: 200%;
+    height: 50%;
+    background: rgb(255, 255, 255);
+    box-shadow: 1px 1px 12px 1px rgb(255, 255, 255);
+    transform: rotate(45deg);
+}
+
+.login:hover::before {
+    animation: shimmer 0.5s linear ;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(0%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.login:hover {
+    color: white !important;
+    font-weight: bold !important;
+}

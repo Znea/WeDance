@@ -106,5 +106,10 @@
                 {{ __('CREAR') }}
             </x-primary-button>
         </form>
+        <form class="w-5/6 mx-auto mt-4" action="{{$rol == 'Alumno' ? route('students') : route('teachers')}}">
+            <button class="button font-semibold bg-secondary w-1/2">
+                {{ __('CANCELAR') }}
+            </button>
+        </form>
     </div>
 </x-app-layout>

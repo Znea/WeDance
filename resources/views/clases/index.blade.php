@@ -35,8 +35,18 @@
     @if (session('msg'))
        <x-alerta>{{session('msg')}}</x-alerta>
     @endif
-    <div>
-        <h1 class="text-center mt-3 text-destacar text-xxl">CLASES</h1>
+
+    <div class="flex justify-between">
+        <div class="w-full">
+            <h1 class="text-center mt-3 text-destacar text-xxl">CLASES</h1>
+        </div>
+        @auth
+            @if (Auth::user()->rol == 'admin')
+                <form action="{{route('clases.create')}}" class="my-auto">
+                    <button class="text-xxl my-auto plus-button ">+</button>
+                </form>
+            @endif
+        @endauth
     </div>
 
     @foreach ($clases as $c )
@@ -103,9 +113,9 @@
             <div class="mt-3">
                 <p class="text-center">{{$c->description}}</p>
             </div>
-            <div class="mt-3">
+            <form class="mt-3" action="{{route('clases.show', ['clase' => $c->id])}}">
                 <button class="w-full button bg-secondary">SABER MÁS</button>
-            </div>
+            </form>
         </div>
     @endforeach
 </x-app-layout>

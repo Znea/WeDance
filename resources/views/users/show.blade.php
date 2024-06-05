@@ -43,11 +43,11 @@
     <div class="contenedor ">
         <img src="{{ asset('storage/img_perfil/' . $user->image) }}" class="image-overlay rounded-lg">
 
-        <div class="descripcion-show text-xs text-destacar">
+        <div class="descripcion-show text-xs text-destacar show">
             <p class="mb-5">{{$user->biography}}</p>
             @if (count($user->teacher_clases) > 0)
                 <h2 class="mt-12 text-secondary text-lg">CLASES</h2>
-                <div class="w-5/6 mx-auto  ">
+                <div class="w-5/6 mx-auto">
                     @foreach ($user->teacher_clases as $c)
                         @auth
                             @if (Auth::user()->rol == "admin")

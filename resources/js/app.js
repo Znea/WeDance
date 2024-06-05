@@ -57,3 +57,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const asignar = document.getElementById('asignarProfesor');
+    const modal = document.getElementById('modal-profesor');
+    const cerrar = document.getElementById('cerrarModal');
+
+    function abrirModal() {
+        if (asignar) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+    }
+
+    function cerrarModal() {
+        if(cerrar) {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+    }
+
+    asignar.addEventListener('click', abrirModal);
+    cerrar.addEventListener('click', cerrarModal);
+});

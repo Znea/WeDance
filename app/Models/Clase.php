@@ -19,7 +19,7 @@ class Clase extends Model
     ];
 
     public function teacher(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
     public function students(){
         return $this->belongsToMany('App\Models\User','student_clase');

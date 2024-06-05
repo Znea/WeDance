@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6, button{
     font-family: Voltaire, sans-serif;
 }
 
-p{
+p, a{
     font-family: Dosis, sans-serif;
 }
 
@@ -43,4 +43,5 @@ p{
 .imagen-clase:hover{
     filter: none;
 }
+
 

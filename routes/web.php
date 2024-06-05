@@ -26,7 +26,7 @@ Route::get('/home', function () {
 
 // USUARIOS
 Route::prefix('/users')->group(function(){
-    Route::get('', [UserController::class, 'index'])->name('users.index');
+    Route::get('', [UserController::class, 'index'])->name('users.index')->middleware('admin');
     Route::post('', [UserController::class,'store'])->name('users.store')->middleware('admin');
     Route::get('/create/{rol}', [UserController::class, 'create'])->name('users.create')->middleware('admin');
     Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
@@ -36,7 +36,7 @@ Route::prefix('/users')->group(function(){
     Route::get('/modal/{user}/{rol}', [UserController::class, 'abrirModal'])->name('users.modal')->middleware('admin');
 });
 Route::get('/teachers', [UserController::class, 'teachers'])->name('teachers');
-Route::get('/students', [UserController::class, 'students'])->name('students');
+Route::get('/students', [UserController::class, 'students'])->name('students')->middleware('admin');
 
 
 // CLASES
@@ -50,6 +50,7 @@ Route::prefix('/clases')->group(function(){
     Route::get('/{clase}/edit', [ClaseController::class, 'edit'])->name('clases.edit')->middleware('admin');
     Route::get('/modal/{clase}/{sitio}', [ClaseController::class, 'abrirModal'])->name('clases.modal')->middleware('admin');
     Route::put('/eliminarProfesor/{clase}', [ClaseController::class, 'eliminarProfesor'])->name('clases.quitarProfesor')->middleware('admin');
+    Route::put('/asignarProfesor/{clase}', [ClaseController::class, 'asignarProfesor'])->name('clases.asignarProfesor')->middleware('admin');
 });
 
 Route::middleware('auth')->group(function () {

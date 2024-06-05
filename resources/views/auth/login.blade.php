@@ -47,7 +47,7 @@
                 </a>
             @endif
         </div>
-        <x-primary-button class="button w-1/2">
+        <x-primary-button class="login w-1/2">
             {{ __('Inicia sesión') }}
         </x-primary-button>
     </form>
