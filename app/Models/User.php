@@ -57,7 +57,7 @@ class User extends Authenticatable
     }
 
     public function students_clases(){
-        return $this->belongsToMany('App\Models\Clase','student_clase');
+        return $this->belongsToMany('App\Models\Clase','student_clase')->withPivot('deleted_at');
     }
 
     public function teacher_clases(){

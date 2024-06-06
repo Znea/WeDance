@@ -65,14 +65,18 @@ document.addEventListener('DOMContentLoaded', function () {
     function abrirModal() {
         if (asignar) {
             modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+            }, 10); // Pequeño retraso para permitir la transicións
         }
     }
 
     function cerrarModal() {
         if(cerrar) {
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Duración de la transición
         }
     }
 

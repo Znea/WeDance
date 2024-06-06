@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentClaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -53,6 +54,14 @@ Route::prefix('/clases')->group(function(){
     Route::put('/asignarProfesor/{clase}', [ClaseController::class, 'asignarProfesor'])->name('clases.asignarProfesor')->middleware('admin');
 });
 
+// STUDENTS_CLASES
+Route::prefix('/student_clases')->group(function(){
+    Route::get('/{vista}', [StudentClaseController::class, 'index'])->name('studentClases.index');
+    Route::post('/{clase}', [StudentClaseController::class,'store'])->name('studentClases.store')->middleware('auth');
+    Route::get('/{clase}', [StudentClaseController::class, 'show'])->name('studentClases.show');
+    Route::put('/{clase}', [StudentClaseController::class, 'update'])->name('studentClases.update')->middleware('auth');
+    Route::delete('/destroy/{clase}', [StudentClaseController::class, 'destroy'])->name('studentClases.destroy')->middleware('auth');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

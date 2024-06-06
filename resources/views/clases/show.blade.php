@@ -1,7 +1,8 @@
 <x-app-layout>
 
     @if (session('msg'))
-
+        <x-alerta>{{session('msg')}}</x-alerta>
+    @endif
 
     <div id="modal-profesor" tabindex="-1" class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto">
         <div class="fixed inset-0 bg-black opacity-50"></div> <!-- Background overlay -->
@@ -65,7 +66,30 @@
                     @endif
                 </div>
             </div>
+
         </div>
+
+        @auth
+            @if (Auth::user()->rol == 'alumno')
+                @php
+                    $apuntado = false;
+                    if(count(Auth::user()->students_clases) != 0){
+                        foreach (Auth::user()->students_clases as $clases) {
+                            if ($clases->id == $clase->id && $clases->pivot->deleted_at == null) {
+                                $apuntado = true;
+                            }
+                        }
+                    }
+                @endphp
+                <form action="{{$apuntado ? route('studentClases.destroy', ['clase' => $clase->id]) : route('studentClases.store' , ['clase' => $clase->id])}}" method="POST">
+                    @csrf
+                    @if($apuntado)
+                        @method('DELETE')
+                    @endif
+                    <button class="login bg-destacar">{{$apuntado ? 'DARSE DE BAJA' : 'APUNTARSE'}}</button>
+                </form>
+            @endif
+        @endauth
     </div>
 
 

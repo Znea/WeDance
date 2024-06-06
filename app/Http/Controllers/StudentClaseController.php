@@ -2,55 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clase;
 use App\Models\StudentClase;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentClaseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $vista)
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Clase $clase)
     {
-        //
-    }
+        try {
+            $studentClase = new StudentClase();
+            $studentClase->clase_id = $clase->id;
+            $studentClase->user_id = auth()->user()->id;
+            $studentClase->save();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(StudentClase $studentClase)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(StudentClase $studentClase)
-    {
-        //
+            return redirect()->route('clases.show', $clase->id )->with('msg', 'Te has apuntado a las clase de '.$clase->name);
+        } catch (QueryException $e) {
+            return redirect()->route('clases.show', $clase->id )->with('msg', 'Ha habido un error al apuntarte a las clase de '.$clase->name);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, StudentClase $studentClase)
+    public function update(Clase $clase)
     {
         //
     }
@@ -58,8 +47,15 @@ class StudentClaseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StudentClase $studentClase)
+    public function destroy(Clase $clase)
     {
-        //
+        try {
+            $studentClase = StudentClase::where('clase_id', $clase->id)->where('user_id', Auth::user()->id)->first();
+            $studentClase->delete();
+
+            return redirect()->route('clases.show', $clase->id )->with('msg', 'Te has desapuntado de la clase de '.$clase->name);
+        } catch (QueryException $e) {
+            return redirect()->route('clases.show', $clase->id )->with('msg', 'No te has podido desapuntar de la clase de '.$clase->name);
+        }
     }
 }
