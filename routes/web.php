@@ -60,7 +60,7 @@ Route::prefix('/student_clases')->group(function(){
     Route::post('/{clase}', [StudentClaseController::class,'store'])->name('studentClases.store')->middleware('auth');
     Route::get('/{clase}', [StudentClaseController::class, 'show'])->name('studentClases.show');
     Route::put('/{clase}', [StudentClaseController::class, 'update'])->name('studentClases.update')->middleware('auth');
-    Route::delete('/destroy/{clase}', [StudentClaseController::class, 'destroy'])->name('studentClases.destroy')->middleware('auth');
+    Route::delete('/destroy/{clase}/{vista}', [StudentClaseController::class, 'destroy'])->name('studentClases.destroy')->middleware('auth');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

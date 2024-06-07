@@ -75,7 +75,7 @@
 
     <div class="mt-4">
         <form action="{{ route('users.show', ['user' => $usuario]) }}" method="get">
-            <button type="submit" class="button w-full text-xs bg-secondary text-white">{{$rol == 'profesor' ? 'SABER MÁS' : 'VER CLASES'}}</button>
+            <button type="submit" class="button w-full text-xs bg-secondary text-white">{{$rol == 'Profesor' ? 'SABER MÁS' : 'VER CLASES'}}</button>
         </form>
     </div>
 </div>

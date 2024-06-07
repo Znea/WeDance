@@ -52,6 +52,12 @@
                                 {{ __('Ver Perfil') }}
                             </x-dropdown-link>
 
+                            @if (Auth::user()->rol == 'alumno')
+                                <x-dropdown-link :href="route('studentClases.index', ['vista' => 'apuntado'])">
+                                    {{ __('Ver Clases') }}
+                                </x-dropdown-link>
+                            @endif
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

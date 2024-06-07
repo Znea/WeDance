@@ -81,7 +81,7 @@
                         }
                     }
                 @endphp
-                <form action="{{$apuntado ? route('studentClases.destroy', ['clase' => $clase->id]) : route('studentClases.store' , ['clase' => $clase->id])}}" method="POST">
+                <form action="{{$apuntado ? route('studentClases.destroy', ['clase' => $clase->id, 'vista' => 'clases']) : route('studentClases.store' , ['clase' => $clase->id])}}" method="POST">
                     @csrf
                     @if($apuntado)
                         @method('DELETE')
