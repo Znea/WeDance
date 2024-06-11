@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {
@@ -31,7 +33,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         try {
             if($request->rol == 'profesor')
@@ -71,7 +73,6 @@ class UserController extends Controller
                 return redirect()->route('teachers')->with('msg', 'El profesor no se ha podido crear');
             }
             elseif($request->rol == 'alumno'){
-                dd($e->getMessage());
                 return redirect()->route('students')->with('msg', 'El alumno no se ha podido crear');
             }
         }

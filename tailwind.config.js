@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                primary: ['Voltaire', ...defaultTheme.fontFamily.sans]
             },
             fontSize: {
                 xxl: '50px',
@@ -24,7 +25,7 @@ export default {
             }
         },
         colors:{
-            primary: '#D67976', 
+            primary: '#D67976',
             secondary: '#398D99',
             darken: '#011627',
             destacar: '#064152',

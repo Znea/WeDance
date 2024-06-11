@@ -52,6 +52,7 @@ Route::prefix('/clases')->group(function(){
     Route::get('/modal/{clase}/{sitio}', [ClaseController::class, 'abrirModal'])->name('clases.modal')->middleware('admin');
     Route::put('/eliminarProfesor/{clase}', [ClaseController::class, 'eliminarProfesor'])->name('clases.quitarProfesor')->middleware('admin');
     Route::put('/asignarProfesor/{clase}', [ClaseController::class, 'asignarProfesor'])->name('clases.asignarProfesor')->middleware('admin');
+    Route::get('/verAlumnos/{clase}', [ClaseController::class, 'verAlumnos'])->name('clases.alumnos')->middleware('auth');
 });
 
 // STUDENTS_CLASES

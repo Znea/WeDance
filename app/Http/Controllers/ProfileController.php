@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -30,6 +31,20 @@ class ProfileController extends Controller
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
+        }
+
+        if(is_uploaded_file($request->file('image'))){
+
+            if($request->user()->image != "default.png"){
+                Storage::delete('public/img_perfil/'.$request->user()->image); // Borramos la foto antigua, ya que la vamos a sustituir
+                $nombreFoto = time()."-".$request->file('image')->getClientOriginalName(); // Creamos un nombre para la foto
+                $request->file('image')->storeAs('public/img_perfil/', $nombreFoto); // La subimos a la carpeta concreta
+
+            }
+            else{
+                $nombreFoto = time()."-".$request->file('image')->getClientOriginalName(); // Creamos un nombre para la foto
+                $request->file('image')->storeAs('public/img_perfil/', $nombreFoto); // La subimos a la carpeta concreta
+            }
         }
 
         $request->user()->save();

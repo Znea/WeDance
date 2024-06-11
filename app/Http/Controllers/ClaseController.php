@@ -6,6 +6,7 @@ use App\Models\Clase;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ClaseController extends Controller
 {
@@ -153,5 +154,12 @@ class ClaseController extends Controller
         } catch (QueryException $e) {
             return redirect()->route('clases.show', ['clase' => $clase->id])->with('msg', 'Se ha podido asignar la clase a este profesor correctamente');
         }
+    }
+
+    public function verAlumnos(string $clase){
+        $clase = Clase::find($clase)->first();
+        $alumnos = $clase->students;
+
+        return view('clases.alumnos')->with('alumnos', $alumnos);
     }
 }

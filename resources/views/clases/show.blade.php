@@ -88,6 +88,14 @@
                     @endif
                     <button class="login bg-destacar">{{$apuntado ? 'DARSE DE BAJA' : 'APUNTARSE'}}</button>
                 </form>
+
+            @else
+                @if (Auth::user()->rol == 'admin' || Auth::user()->id == $clase->user_id)
+                    <form action="{{route('clases.alumnos', ['clase' => $clase->id])}}">
+                        @csrf
+                        <button class="login bg-destacar">VER ALUMNOS</button>
+                    </form>
+                @endif
             @endif
         @endauth
     </div>

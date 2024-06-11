@@ -1,54 +1,89 @@
 <section>
-    <header>
+
+    <header class="text-center">
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Profile Information') }}
+            {{ __('Información del perfil') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+            {{ __("Actualiza tu información") }}
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
-        @csrf
-    </form>
-
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form id="send-verification" method="post" action="{{ route('profile.update') }}">
         @csrf
         @method('patch')
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
+        <div class="mt-9">
+            <div class="flex items-center justify-between">
+                <!-- Name -->
+                <div class="relative z-0 w-full mb-5 group me-2" x-data="{ focused: false }">
+                    <x-input-label for="name" :value="__('Nombre')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                    <x-text-input id="name" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="name" :value="old('name', $user->name)" autofocus autocomplete="username" x-ref="input" />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
 
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+                <!-- LastName -->
+                <div class="relative z-0 w-full mb-5 group ms-2" x-data="{ focused: false }">
+                    <x-input-label for="lastname" :value="__('Apellidos')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                    <x-text-input id="lastname" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname', $user->lastname)" autofocus autocomplete="username" x-ref="input" />
+                    <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
+                </div>
+            </div>
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            <!-- Address -->
+            <div class="relative z-0 w-full mb-5 group" x-data="{ focused: false }">
+                <x-input-label for="address" :value="__('Dirección')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                <x-text-input id="address" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="address" :value="old('address', $user->address)" autofocus autocomplete="username" x-ref="input" />
+                <x-input-error :messages="$errors->get('address')" class="mt-2" />
+            </div>
+
+            <div class="flex items-center justify-between">
+                <!-- Phone -->
+                <div class="relative z-0 w-full mb-5 group me-2" x-data="{ focused: false }">
+                    <x-input-label for="phone" :value="__('Teléfono')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                    <x-text-input id="phone" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="phone" :value="old('phone', $user->phone)" autofocus autocomplete="username" x-ref="input" />
+                    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                </div>
+
+                <!-- DNI -->
+                <div class="relative z-0 w-full mb-5 group ms-2" x-data="{ focused: false }">
+                    <x-input-label for="dni" :value="__('DNI')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                    <x-text-input id="dni" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="text" name="dni" :value="old('dni', $user->dni)" autofocus autocomplete="username" x-ref="input" />
+                    <x-input-error :messages="$errors->get('dni')" class="mt-2" />
+                </div>
+            </div>
+
+            <!-- Fecha de nacimiento -->
+            <div class="relative z-0 w-full mb-5 group">
+                <x-input-label for="date_of_birth" :value="__('Fecha de Nacimiento')"/>
+                <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth', $user->date_of_birth)" autofocus autocomplete="username" x-ref="input" />
+                <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
+            </div>
+
+            <!-- Email Address -->
+            <div class="relative z-0 w-full mb-5 group" x-data="{ focused: false }">
+                <x-input-label for="email" :value="__('Correo')" class="label" x-bind:class="{ 'label-focused': focused || $refs.input.value }"/>
+                <x-text-input id="email" x-on:focus="focused = true" x-on:blur="focused = false" x-bind:class="{ 'input-focused': focused || $refs.input.value }" class="block mt-1 w-full" type="email" name="email" :value="old('email', $user->email)" autofocus autocomplete="username" x-ref="input" />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+
+            @if ($user->rol == 'profesor')
                 <div>
-                    <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
-                        {{ __('Your email address is unverified.') }}
-
-                        <button form="send-verification" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                            {{ __('Click here to re-send the verification email.') }}
-                        </button>
-                    </p>
-
-                    @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                            {{ __('A new verification link has been sent to your email address.') }}
-                        </p>
-                    @endif
+                    <x-input-label :value="__('Biografía')" />
+                    <textarea class="biography" placeholder="Escribe una biografía sobre ti" name="biography"  autofocus autocomplete="biography">{{old('biography', $user->biography)}}</textarea>
+                    <x-input-error class="mt-2" :messages="$errors->get('biography')" />
                 </div>
             @endif
+
+            <div class="text-start">
+                <input id="image" name="image" type="file" class="mt-1" :value="old('image', $user->image)" autofocus autocomplete="image" />
+                <x-input-error class="mt-2" :messages="$errors->get('image')" />
+            </div>
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <div class="flex items-center gap-4 mt-7">
+            <x-primary-button class="login">{{ __('Guardar') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -57,7 +92,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
+                >{{ __('Guardar.') }}</p>
             @endif
         </div>
     </form>
