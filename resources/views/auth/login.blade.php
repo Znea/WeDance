@@ -1,6 +1,6 @@
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-session-status class="mb-4 " :status="session('status')" />
 
     <div class="text-center">
         <p class="font-semibold text-destacar">¿Todavía no tienes una cuenta? <a class="hover:underline" href="{{route('register')}}">Regístrate</a></p>
