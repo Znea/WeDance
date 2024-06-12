@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Voltaire&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Voltaire&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
         <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon" />
 
         <!-- Scripts -->
@@ -23,14 +24,20 @@
 
             <div>
                 <a href="{{route('/')}}">
-                    <img src="{{asset('images/logo.png')}}" class="w-40" alt="">
+                    <img src="{{asset('images/logo.png')}}" class="w-40" alt="" data-aos="fade-down">
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 bg-white py-4 contenedor overflow-hidden">
+            <div class="w-full sm:max-w-md mt-6 px-6 bg-white py-4 contenedor overflow-hidden" data-aos="zoom-in">
                 {{ $slot }}
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 2000, // Duración en milisegundos
+            });
+        </script>
     </body>
 </html>

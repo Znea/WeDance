@@ -1,54 +1,28 @@
 <x-app-layout>
 
 
-    <div id="controls-carousel" class="relative w-full mb-10" data-carousel="static">
+    <div id="controls-carousel" class="relative w-full" data-carousel="static">
         <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden md:h-96">
-            <!-- Item 1 -->
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                <div class="relative group">
-                    <img src="{{ asset('images/categorias/baby.jpg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/4 top-2/3 left-1/2" alt="...">
-                    <div class=" block w-full bg-darken opacity-0 hover:opacity-50"></div>
-                    <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <p class="text-white text-lg">BABY</p>
-                    </div>
-                </div>
+                <img src="{{asset('images/categorias/baby.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/3 top-1/2 left-1/2" alt="...">
             </div>
             <!-- Item 2 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="relative group">
-                    <img src="{{asset('images/categorias/infantil.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/3 top-2/3 left-1/2" alt="...">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                        <span class="text-white text-lg">INFANTIL</span>
-                    </div>
-                </div>
+                <img src="{{asset('images/categorias/infantil.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/3 top-2/3 left-1/2" alt="...">
             </div>
             <!-- Item 3 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="relative group">
-                    <img src="{{asset('images/categorias/juvenil.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                        <span class="text-white text-lg">Texto 3</span>
-                    </div>
-                </div>
+                <img src="{{asset('images/categorias/juvenil.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </div>
             <!-- Item 4 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="relative group">
-                    <img src="{{asset('images/categorias/amateur.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                        <span class="text-white text-lg">Texto 4</span>
-                    </div>
-                </div>
+                <img src="{{asset('images/categorias/amateur.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </div>
             <!-- Item 5 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="relative group">
-                    <img src="{{asset('images/categorias/senior.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/3 top-1/2 left-1/2" alt="...">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                        <span class="text-white text-lg">Texto 5</span>
-                    </div>
-                </div>
+                <img src="{{asset('images/categorias/senior.jpg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/3 top-1/2 left-1/2" alt="...">
             </div>
         </div>
         <!-- Slider controls -->
@@ -70,11 +44,11 @@
         </button>
     </div>
 
-    <div>
+    <div data-aos="flip-right">
         <h1 class="text-center mt-3 text-destacar text-xxl">WE DANCE</h1>
     </div>
 
-    <x-contenedor :ruta="'home'">
+    <x-contenedor :ruta="'institucion'">
         <x-slot name="title">
             INSTITUCIÓN
         </x-slot>
@@ -83,7 +57,7 @@
         </x-slot>
     </x-contenedor>
 
-    <x-contenedor :ruta="'teachers'">
+    <x-contenedor :ruta="'teachers'" >
         <x-slot name="title">
             PROFESORES
         </x-slot>
@@ -92,7 +66,7 @@
         </x-slot>
     </x-contenedor>
 
-    <x-contenedor :ruta="'home'">
+    <x-contenedor :ruta="'clases.index'">
         <x-slot name="title">
             CLASES
         </x-slot>

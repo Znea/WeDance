@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Voltaire&display=swap" rel="stylesheet">
         <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -29,5 +30,11 @@
             @include('layouts.footer')
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 2000, // Duración en milisegundos
+            });
+        </script>
     </body>
 </html>

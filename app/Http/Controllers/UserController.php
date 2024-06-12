@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 
 class UserController extends Controller
@@ -227,4 +228,12 @@ class UserController extends Controller
         }
     }
 
+    public function institucion(){
+        return view('institucion');
+    }
+
+    public function descargarPlanIncendios(){
+        $pdf = PDF::loadView('documento.planIncendios');
+        return $pdf->download('plan_evacuacion.pdf');
+    }
 }

@@ -43,7 +43,7 @@
         </div>
         @auth
             @if (Auth::user()->rol == 'admin')
-                <form action="{{route('users.create', ['rol' => 'Alumno'])}}" class="my-auto">
+                <form action="{{route('users.create', ['rol' => 'Alumno'])}}" class="my-auto" data-aos="zoom-in">
                     <button class="text-xxl my-auto plus-button ">+</button>
                 </form>
             @endif

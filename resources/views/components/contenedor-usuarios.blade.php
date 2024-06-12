@@ -1,4 +1,4 @@
-<div class="contenedor">
+<div class="contenedor" data-aos="zoom-in">
     <div class="flex">
         <div class="w-1/4 ">
             <img src="{{asset('storage/img_perfil/'.$imagen)}}" class="mx-auto rounded-full imagen-profesor">
@@ -65,8 +65,8 @@
                     <p>{{$biography}}</p>
                 </div>
             @else
-                <div>
-                    <p>{{$category}}</p>
+                <div class="text-center mt-4">
+                    <p class="text-sm text-destacar">{{$category}}</p>
                 </div>
             @endif
         </div>

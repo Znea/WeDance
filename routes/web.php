@@ -36,6 +36,8 @@ Route::prefix('/users')->group(function(){
     Route::get('/{user}/edit/{rol}', [UserController::class, 'edit'])->name('users.edit')->middleware('admin');
     Route::get('/modal/{user}/{rol}', [UserController::class, 'abrirModal'])->name('users.modal')->middleware('admin');
 });
+Route::get('/institucion', [UserController::class, 'institucion'])->name('institucion');
+Route::get('/incendios-pdf', [UserController::class, 'descargarPlanIncendios'])->name('incendios')->middleware('auth');
 Route::get('/teachers', [UserController::class, 'teachers'])->name('teachers');
 Route::get('/students', [UserController::class, 'students'])->name('students')->middleware('admin');
 

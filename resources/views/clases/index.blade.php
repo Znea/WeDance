@@ -42,7 +42,7 @@
         </div>
         @auth
             @if (Auth::user()->rol == 'admin')
-                <form action="{{route('clases.create')}}" class="my-auto">
+                <form action="{{route('clases.create')}}" class="my-auto" data-aos="zoom-in">
                     <button class="text-xxl my-auto plus-button ">+</button>
                 </form>
             @endif
@@ -50,7 +50,7 @@
     </div>
 
     @foreach ($clases as $c )
-        <div class="contenedor">
+        <div class="contenedor" data-aos="zoom-in">
             @auth
                 @if (Auth::user()->rol == 'admin')
                     <div class="flex justify-between">

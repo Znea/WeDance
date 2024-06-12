@@ -1,4 +1,4 @@
-<div class="contenedor">
+<div class="contenedor" data-aos="zoom-in">
     <h2 class="text-center text-xl text-secondary">
         {{$title}}
     </h2>
