@@ -1,5 +1,17 @@
-input#file-upload-button {
-    background-color: #064152 !important;
-    color: white !important;
-    border-radius: 100% !important;
+.custom-select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    padding: 10px !important;
+    font-size: 16px !important;
+    width: 100% !important;
+    cursor: pointer !important;
+}
+
+/* Estiliza las opciones */
+.custom-select option {
+    background-color: #fff !important;
+    color: #000 !important;
+    padding: 10px !important;
+    border-radius: 20px !important;
 }

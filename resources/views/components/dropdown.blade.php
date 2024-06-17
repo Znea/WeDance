@@ -8,6 +8,9 @@ switch ($align) {
     case 'top':
         $alignmentClasses = 'origin-top';
         break;
+    case'center':
+        $alignmentClasses = 'ltr:origin-top-center rtl:origin-top-left end-0';
+        break;
     case 'right':
     default:
         $alignmentClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
@@ -17,6 +20,9 @@ switch ($align) {
 switch ($width) {
     case '48':
         $width = 'w-48';
+        break;
+    case '100':
+        $width = 'w-full';
         break;
 }
 @endphp

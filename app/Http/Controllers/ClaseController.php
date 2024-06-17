@@ -158,7 +158,14 @@ class ClaseController extends Controller
 
     public function verAlumnos(string $clase){
         $clase = Clase::find($clase)->first();
-        $alumnos = $clase->students;
+        $alum = $clase->students;
+        $alumnos = array();
+
+        foreach($alum as $a){
+            if($a->rol == 'alumno'){
+                array_push($alumnos, $a);
+            }
+        }
 
         return view('clases.alumnos')->with('alumnos', $alumnos);
     }

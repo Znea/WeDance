@@ -14,7 +14,7 @@
                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                         </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este profesor?</h3>
+                        <h3 class="mb-5 text-md md:text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este profesor?</h3>
                         <div class="flex inline-flex">
                             <form action="{{ route('users.destroy', ['user' => session('id') , 'rol' => 'profesor' ]) }}" method="POST">
                                 @csrf
@@ -38,7 +38,7 @@
 
     <div class="flex justify-between">
         <div class="w-full">
-            <h1 class="text-center mt-3 text-destacar text-xxl">PROFESORES</h1>
+            <h1 class="text-center mt-3 text-destacar tit">PROFESORES</h1>
         </div>
         @auth
             @if (Auth::user()->rol == 'admin')

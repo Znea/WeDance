@@ -44,4 +44,11 @@ p, a{
     filter: none;
 }
 
+@media screen and (max-width: 640px) {
+    .imagen-clase{
+        filter: none;
+    }
+}
+
+
 

@@ -4,7 +4,7 @@
             {{ __('Cambiar Contraseña') }}
         </h2>
 
-        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-tight">
             {{ __('Asegúrate de que la contraseña de la cuenta sea larga y segura') }}
         </p>
     </header>

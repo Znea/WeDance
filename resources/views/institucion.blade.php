@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex justify-between">
         <div class="w-full">
-            <h1 class="text-center mt-3 text-destacar text-xxl">INSTITUCIÓN</h1>
+            <h1 class="text-center mt-3 text-destacar tit">INSTITUCIÓN</h1>
         </div>
         @auth
             <form action="{{route('incendios')}}" class="my-auto" data-aos="zoom-in">
@@ -20,7 +20,7 @@
 
     <div class="contenedor" data-aos="zoom-in">
         <div class="text-sm leading-tight ms-5">
-            <h2 class="text-xl text-destacar font-semibold text-center mb-5">Escuela de Danza Urbana: We Dance</h2>
+            <h2 class="text-destacar font-semibold text-center mb-5 tit">Escuela de Danza Urbana: We Dance</h2>
             <p class="text-center">
                 We Dance es una institución líder en la enseñanza de baile urbano, comprometida con el desarrollo artístico
                 y personal de sus estudiantes. Fundada en 2010, la academia se ha destacado por su enfoque innovador y su dedicación

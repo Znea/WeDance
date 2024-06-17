@@ -36,3 +36,21 @@
 #imageModal {
     display: none;
 }
+
+.modal-borrar>h2{
+    font-size: 40px;
+}
+
+.modal-borrar>p{
+    font-size: 30px;
+}
+
+@media screen and (max-width: 640px){
+    .modal-borrar>h2{
+        font-size: 30px;
+    }
+
+    .modal-borrar>p{
+        font-size: 20px;
+    }
+}

@@ -20,7 +20,7 @@
 
             {{-- PROFESOR --}}
             <div class="mb-5">
-                <select id="underline_select" name="teacher" class="block py-2.5 px-0 w-full text-destacar bg-transparent border-0 border-b-2 border-destacar appearance-none focus:outline-none focus:ring-0 focus:border-destacar peer">
+                <select id="underline_select" name="teacher" class="block py-2.5 px-0 w-full text-destacar bg-transparent border-0 border-b-2 border-destacar appearance-none focus:outline-none focus:ring-0 focus:border-destacar peer custom-select">
                     <option value="null" selected>Profesor</option>
                     @foreach ($profesores as $p)
                         <option value="{{$p->id}}">{{$p->name}} {{$p->lastname}}</option>
@@ -44,12 +44,12 @@
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
 
-            <x-primary-button class="button w-1/2">
+            <x-primary-button class="login w-1/2">
                 {{ __('CREAR') }}
             </x-primary-button>
         </form>
         <form class="w-5/6 mx-auto mt-4" action="{{route('clases.index')}}">
-            <button class="button font-semibold bg-secondary w-1/2">
+            <button class="login font-semibold bg-secondary w-1/2">
                 {{ __('CANCELAR') }}
             </button>
         </form>

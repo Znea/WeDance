@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="mt-8">
-        <img src="{{asset('storage/img_perfil/'.Auth::user()->image)}}" alt="imagen de perfil" class="w-2/12 mx-auto rounded-full shadow shadow-destacar shadow-xl">
+        <img src="{{asset('storage/img_perfil/'.Auth::user()->image)}}" alt="imagen de perfil" class="w-1/3 mx-auto rounded-full shadow shadow-destacar shadow-xl">
     </div>
 
     <div class="py-12">

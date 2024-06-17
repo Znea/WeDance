@@ -19,7 +19,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class=" min-h-screen bg-fondo">
+        <div class="pb-8 min-h-screen bg-fondo">
             @include('layouts.navigation')
 
             <!-- Page Content -->
@@ -27,8 +27,9 @@
                 {{ $slot }}
             </main>
 
-            @include('layouts.footer')
+
         </div>
+        @include('layouts.footer')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
