@@ -34,9 +34,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'date_of_birth' => ['required', 'date'],
-            'phone' => ['required', 'numeric'],
+            'phone' => ['required', 'numeric', 'min:9'],
             'address' => ['required','string','max:255'],
-            'dni' => ['required', 'string', 'unique:'.User::class],
+            'dni' => ['required', 'string', 'min:8', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -54,17 +54,23 @@ class RegisteredUserController extends Controller
                 'password' => Hash::make($request->password),
             ]);
         }else {
-            $user = User::create([
-                'name' => $request->name,
-                'lastname' => $request->lastname,
-                'date_of_birth' => $request->date_of_birth,
-                'phone' => $request->phone,
-                'address' => $request->address,
-                'rol' => 'alumno',
-                'dni' => $request->dni,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
+            if($request->rol == 'profesor' && $request->clave != 'Profesor1234'){
+                return redirect()->route('register')->with('msg', 'La clave no es correcta');
+            }
+            else{
+                $user = User::create([
+                    'name' => $request->name,
+                    'lastname' => $request->lastname,
+                    'date_of_birth' => $request->date_of_birth,
+                    'phone' => $request->phone,
+                    'address' => $request->address,
+                    'rol' => 'alumno',
+                    'dni' => $request->dni,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
+            }
+
         }
 
 
