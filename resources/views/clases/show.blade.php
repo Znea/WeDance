@@ -43,7 +43,7 @@
     <div class="contenedor w-5/6 mx-auto">
 
         <div class="image-overlay-clase-container rounded-lg">
-            <img src="{{ asset('storage/img_clases/' . $clase->image) }}" class="image-overlay-clase ">
+            <img src="{{ asset('storage/img_clases/' . $clase->image) }}" class="image-overlay-clase " alt="foto de la clase">
         </div>
 
         <div class="show">

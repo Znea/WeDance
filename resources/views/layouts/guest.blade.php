@@ -24,7 +24,7 @@
 
             <div>
                 <a href="{{route('/')}}">
-                    <img src="{{asset('images/logo.png')}}" class="w-40" alt="" data-aos="fade-down">
+                    <img src="{{asset('images/logo.png')}}" class="w-40" alt="" data-aos="fade-down" alt="logo de la web">
                 </a>
             </div>
 

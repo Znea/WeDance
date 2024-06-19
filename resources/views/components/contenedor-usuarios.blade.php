@@ -1,7 +1,7 @@
 <div class="contenedor" data-aos="zoom-in">
     <div class="flex">
         <div class="w-1/4 ">
-            <img src="{{asset('storage/img_perfil/'.$imagen)}}" class="mx-auto rounded-full imagen-profesor">
+            <img src="{{asset('storage/img_perfil/'.$imagen)}}" class="mx-auto rounded-full imagen-profesor" alt="perfil">
         </div>
         <div class="w-full">
             @auth

@@ -108,7 +108,7 @@
                 </div>
             @endauth
             <div class="image-container">
-                <img src="{{asset('storage/img_clases/'.$c->image)}}" class="imagen-clase">
+                <img src="{{asset('storage/img_clases/'.$c->image)}}" class="imagen-clase" alt="foto de la clase">
             </div>
             <div class="mt-3">
                 <p class="text-center">{{$c->description}}</p>

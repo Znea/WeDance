@@ -180,7 +180,7 @@
                     <x-slot name="trigger">
                         <button class="w-full inline-flex items-center px-3 py-2 border border-transparent leading-4 font-medium rounded-lg">
                             <div class="w-full inline-flex items-center text-destacar hover:font-bold">
-                                <img class="w-10 h-10 rounded-full me-2" src='{{asset('storage/img_perfil/'.Auth::user()->image)}}' alt="">
+                                <img class="w-10 h-10 rounded-full me-2" src='{{asset('storage/img_perfil/'.Auth::user()->image)}}' alt="foto de perfil">
                                 <p class="text-xs text-center w-full">{{ Auth::user()->name }}</p>
                             </div>
 

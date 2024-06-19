@@ -6,7 +6,7 @@
 
     <div class="contenedor w-3/4 mx-auto">
 
-        <img src="{{ asset('storage/img_perfil/' . $user->image) }}" class="image-overlay rounded-lg">
+        <img src="{{ asset('storage/img_perfil/' . $user->image) }}" class="image-overlay rounded-lg" alt="foto de la clase">
 
         <form action="{{route('users.update', ['user' => $user->id])}}" method="POST" class="w-5/6 mx-auto show" enctype="multipart/form-data">
             @csrf

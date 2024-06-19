@@ -41,41 +41,63 @@
     </div>
 
     <div class="contenedor ">
-        <img src="{{ asset('storage/img_perfil/' . $user->image) }}" class="image-overlay rounded-lg">
+        <img src="{{ asset('storage/img_perfil/' . $user->image) }}" class="image-overlay rounded-lg" alt="foto de perfil">
 
         <div class="descripcion-show text-xs text-destacar show">
-            <p class="mb-5">{{$user->biography}}</p>
-            @if (count($user->teacher_clases) > 0)
-                <h2 class="mt-12 text-secondary text-lg">CLASES</h2>
-                <div class="w-5/6 mx-auto">
-                    @foreach ($user->teacher_clases as $c)
-                        @auth
-                            @if (Auth::user()->rol == "admin")
-                                <div class="mt-3 flex justify-between border-b-2 border-primary">
-                                    <p>{{$c->name}}</p>
-                                    <!-- Destroy -->
-                                    <form action="{{route('clases.modal', ['clase' => $c->id, 'sitio' => 'profesor'])}}">
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-destacar hover:text-darken">
-                                                <polyline points="3 6 5 6 21 6"></polyline>
-                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                <line x1="14" y1="11" x2="14" y2="17"></line>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </div>
+            @if ($user->rol == 'profesor' )
+                <p class="mb-5">{{$user->biography}}</p>
+                @if (count($user->teacher_clases) > 0)
+                    <h2 class="mt-12 text-secondary text-lg">CLASES</h2>
+                    <div class="w-5/6 mx-auto">
+                        @foreach ($user->teacher_clases as $c)
+                            @auth
+                                @if (Auth::user()->rol == "admin")
+                                    <div class="mt-3 flex justify-between border-b-2 border-primary">
+                                        <p>{{$c->name}}</p>
+                                        <!-- Destroy -->
+                                        <form action="{{route('clases.modal', ['clase' => $c->id, 'sitio' => 'profesor'])}}">
+                                            <button type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-destacar hover:text-darken">
+                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class="mt-3 flex justify-between border-b-2 border-primary">
+                                        <p>{{$c->name}}</p>
+                                    </div>
+                                @endif
                             @else
                                 <div class="mt-3 flex justify-between border-b-2 border-primary">
                                     <p>{{$c->name}}</p>
                                 </div>
-                            @endif
-                        @else
-                            <div class="mt-3 flex justify-between border-b-2 border-primary">
-                                <p>{{$c->name}}</p>
-                            </div>
-                        @endauth
-                    @endforeach
+                            @endauth
+                        @endforeach
+                    </div>
+                @endif
+
+            @elseif ($user->rol == 'alumno')
+                <div class="flex inline-flex">
+                    <p class="font-semibold me-4">DNI:</p>
+                    <p class="ms-2 me-4">{{$user->dni}}</p>
+                    <p class="font-semibold ms-2 me-4">FECHA DE NACIMIENTO:</p>
+                    <p class="ms-2 me-4">{{\Illuminate\Support\Facades\Date::parse($user->date_of_birth)->format('d/m/Y')}}</p>
+                </div>
+                <div class="flex inline-flex">
+                    <p class="font-semibold me-4">TELÉFONO:</p>
+                    <p class="ms-2 me-4">{{$user->phone}}</p>
+                    <p class="font-semibold ms-2 me-4">CATEGORÍA:</p>
+                    <p class="ms-2 me-4">{{$user->category->name    }}</p>
+                    <p class="font-semibold ms-2 me-4">CORREO ELECTRÓNICO:</p>
+                    <p class="ms-2">{{$user->email}}</p>
+                </div>
+                <div class="flex inline-flex">
+                    <p class="font-semibold me-4">DIRECCIÓN:</p>
+                    <p class="ms-2 me-4">{{$user->address}}</p>
                 </div>
             @endif
         </div>

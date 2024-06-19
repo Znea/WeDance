@@ -7,7 +7,7 @@
     <div class="contenedor w-3/4 mx-auto">
 
         <div class="image-overlay-clase-container rounded-lg">
-            <img src="{{ asset('storage/img_clases/' . $clase->image) }}" class="image-overlay-clase ">
+            <img src="{{ asset('storage/img_clases/' . $clase->image) }}" class="image-overlay-clase " alt="foto de la clase">
         </div>
 
         <form action="{{route('clases.update', ['clase' => $clase->id])}}" method="POST" class="w-5/6 mx-auto show" enctype="multipart/form-data">
